@@ -1,0 +1,25 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="900" fill="#0F172A"/>
+  <defs>
+    <radialGradient id="g1" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(300 140) rotate(30) scale(420 260)">
+      <stop stop-color="#38BDF8" stop-opacity="0.6"/>
+      <stop offset="1" stop-color="#38BDF8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1320 120) rotate(160) scale(360 240)">
+      <stop stop-color="#818CF8" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#818CF8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="g3" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(860 730) rotate(12) scale(700 360)">
+      <stop stop-color="#2DD4BF" stop-opacity="0.3"/>
+      <stop offset="1" stop-color="#2DD4BF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#g1)"/>
+  <rect width="1600" height="900" fill="url(#g2)"/>
+  <rect width="1600" height="900" fill="url(#g3)"/>
+  <rect x="180" y="170" width="1240" height="560" rx="34" fill="white" fill-opacity="0.08" stroke="white" stroke-opacity="0.35"/>
+  <text x="240" y="285" fill="white" fill-opacity="0.9" font-family="Inter, Arial, sans-serif" font-size="46" font-weight="600">NOMA Workflow Demo</text>
+  <text x="240" y="338" fill="white" fill-opacity="0.72" font-family="Inter, Arial, sans-serif" font-size="28">Traveler request ’ Operator coordination ’ Bookable Everest itinerary</text>
+  <circle cx="800" cy="470" r="58" fill="white" fill-opacity="0.22" stroke="white" stroke-opacity="0.5"/>
+  <polygon points="780,438 780,502 836,470" fill="white" fill-opacity="0.95"/>
+</svg>
