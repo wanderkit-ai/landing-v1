@@ -1,7 +1,6 @@
-import { ArrowRight, Mail } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
-const EMAIL = "founders@noma.travel";
-const CALL_URL = "https://cal.com/noma";
+const BOOK_URL = "https://calendly.com/arijitchakma79/30min";
 
 export function Contact() {
   return (
@@ -14,20 +13,12 @@ export function Contact() {
           Ready to let agents run your trips?
         </h2>
         <p className="mx-auto mt-5 max-w-md text-base leading-7 text-slate-500">
-          Reach out directly or book a call — we'll walk you through how NOMA works for your audience.
+          Book a call — we'll walk you through how NOMA works for your audience.
         </p>
 
-        <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <div className="mt-10 flex justify-center">
           <a
-            href={`mailto:${EMAIL}`}
-            className="inline-flex items-center gap-2.5 rounded-full border border-slate-200 bg-white px-6 py-3 text-sm font-medium text-slate-600 shadow-sm transition hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700"
-          >
-            <Mail size={15} className="text-slate-400" />
-            {EMAIL}
-          </a>
-
-          <a
-            href={CALL_URL}
+            href={BOOK_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="glass-button inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-white"

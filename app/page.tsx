@@ -14,7 +14,6 @@ import { WaitlistForm } from "@/components/WaitlistForm";
 
 const BRAND = {
   name: "NOMA",
-  contactEmail: "founders@noma.travel",
 };
 
 export default function HomePage() {
