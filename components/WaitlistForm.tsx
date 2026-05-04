@@ -32,6 +32,8 @@ export function WaitlistForm() {
 
     setState("loading");
 
+    const successCopy = "Success! We'll contact you shortly.";
+
     try {
       const response = await fetch("/api/waitlist", {
         method: "POST",
@@ -41,7 +43,15 @@ export function WaitlistForm() {
         body: JSON.stringify(payload),
       });
 
-      const data = await response.json();
+      let data: { ok?: boolean; message?: string; error?: string } = {};
+      const raw = await response.text();
+      if (raw) {
+        try {
+          data = JSON.parse(raw) as typeof data;
+        } catch {
+          // Some responses are 200 but body is empty or non-JSON; rely on response.ok.
+        }
+      }
 
       if (!response.ok) {
         setState("error");
@@ -50,7 +60,11 @@ export function WaitlistForm() {
       }
 
       setState("success");
-      setMessage(data.message || "You're on the list.");
+      setMessage(
+        typeof data.message === "string" && data.message.trim()
+          ? data.message
+          : successCopy,
+      );
       event.currentTarget.reset();
     } catch {
       setState("error");

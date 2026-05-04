@@ -48,7 +48,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({
       ok: true,
-      message: "You're on the list. We'll be in touch soon.",
+      message: "Success! We'll contact you shortly.",
     });
   } catch {
     return NextResponse.json(
