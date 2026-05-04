@@ -1,65 +1,58 @@
-import { CalendarDays, MapPin, Route, Sparkles } from "lucide-react";
+import { DollarSign, MapPin, Users } from "lucide-react";
 
 export function HeroPreview() {
   return (
-    <div className="liquid-glass relative mx-auto mt-12 w-full max-w-5xl rounded-[2rem] p-4 md:mt-16">
-      <div className="liquid-glass rounded-[1.5rem] p-4 text-slate-900">
-        <div className="mb-4 flex items-center justify-between">
-          <div className="flex gap-1.5">
-            <span className="h-3 w-3 rounded-full bg-red-400" />
-            <span className="h-3 w-3 rounded-full bg-yellow-400" />
-            <span className="h-3 w-3 rounded-full bg-green-400" />
+    <div className="relative mx-auto mt-5 w-full max-w-4xl overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl shadow-slate-200/50">
+      <div className="p-4">
+        {/* Traveler request */}
+        <div className="mb-3 flex items-start gap-3 rounded-xl border border-blue-100 bg-blue-50 p-3">
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-blue-400 to-indigo-500 text-xs font-bold text-white">
+            S
           </div>
-          <div className="glass-pill rounded-full px-3 py-1 text-xs text-slate-600">
-            Live trip view
-          </div>
-        </div>
-
-        <div className="grid gap-4 md:grid-cols-3">
-          <div className="liquid-glass rounded-2xl p-4">
-            <Route className="mb-5 h-6 w-6 text-blue-300" />
-            <p className="text-sm text-slate-500">Itinerary</p>
-            <h3 className="mt-1 text-lg font-semibold">Everest Base Camp · 12D</h3>
-            <p className="mt-3 text-sm text-slate-600">
-              Guides, routes, permits, and logistics coordinated end-to-end.
-            </p>
-          </div>
-
-          <div className="liquid-glass rounded-2xl p-4">
-            <Sparkles className="mb-5 h-6 w-6 text-indigo-300" />
-            <p className="text-sm text-slate-500">Agent</p>
-            <h3 className="mt-1 text-lg font-semibold">Pricing + availability</h3>
-            <p className="mt-3 text-sm text-slate-600">
-              AI confirms supplier inventory, pricing, and booking constraints.
-            </p>
-          </div>
-
-          <div className="liquid-glass rounded-2xl p-4">
-            <CalendarDays className="mb-5 h-6 w-6 text-sky-300" />
-            <p className="text-sm text-slate-500">Operations</p>
-            <h3 className="mt-1 text-lg font-semibold">Advisor control panel</h3>
-            <p className="mt-3 text-sm text-slate-600">
-              Manage travelers, operators, and booking status in one workspace.
+          <div>
+            <p className="text-xs font-semibold text-slate-700">@sarahexplores · 248k followers</p>
+            <p className="mt-0.5 text-sm text-slate-600">
+              "I want to take 8 followers to Everest Base Camp. 12 days, mid-October. Budget around $2,500/person."
             </p>
           </div>
         </div>
 
-        <div className="liquid-glass mt-4 rounded-2xl p-4">
-          <div className="flex items-start gap-3">
-            <div className="glass-button rounded-full p-2 text-white">
-              <MapPin size={18} />
-            </div>
-
-            <div>
-              <p className="text-sm font-medium">
-                Two local operators confirmed availability this week.
-              </p>
-              <p className="mt-1 text-sm text-slate-600">
-                NOMA auto-selects the best-fit option and returns a fully
-                bookable plan for your traveler.
-              </p>
-            </div>
+        {/* Trip details */}
+        <div className="grid gap-2 sm:grid-cols-3">
+          <div className="rounded-xl border border-slate-100 bg-slate-50 p-3">
+            <MapPin className="mb-1.5 h-4 w-4 text-blue-500" />
+            <p className="text-xs text-slate-400">Destination</p>
+            <p className="text-sm font-semibold text-slate-900">Nepal · 12 days</p>
+            <p className="mt-0.5 text-xs text-slate-500">Oct 15 – Oct 27</p>
           </div>
+
+          <div className="rounded-xl border border-slate-100 bg-slate-50 p-3">
+            <Users className="mb-1.5 h-4 w-4 text-emerald-500" />
+            <p className="text-xs text-slate-400">Local guides</p>
+            <p className="text-sm font-semibold text-slate-900">2 operators confirmed</p>
+            <p className="mt-0.5 text-xs text-emerald-600">Available Oct 15 ✓</p>
+          </div>
+
+          <div className="rounded-xl border border-slate-100 bg-slate-50 p-3">
+            <DollarSign className="mb-1.5 h-4 w-4 text-indigo-500" />
+            <p className="text-xs text-slate-400">Your revenue</p>
+            <p className="text-sm font-semibold text-slate-900">$2,400 / person</p>
+            <p className="mt-0.5 text-xs text-slate-500">8 travelers · $19,200 total</p>
+          </div>
+        </div>
+
+        {/* Status */}
+        <div className="mt-3 flex items-center gap-3 rounded-xl border border-emerald-100 bg-emerald-50 px-3 py-2.5">
+          <span className="relative flex h-2 w-2 shrink-0">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-400" />
+          </span>
+          <p className="text-xs font-medium text-emerald-700">
+            Itinerary ready — share the bookable trip link with @sarahexplores
+          </p>
+          <span className="ml-auto shrink-0 rounded-full bg-emerald-600 px-3 py-1 text-xs font-semibold text-white">
+            Share →
+          </span>
         </div>
       </div>
     </div>

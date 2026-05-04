@@ -7,124 +7,120 @@ type FormState = "idle" | "loading" | "success" | "error";
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+const inputCls =
+  "h-11 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-900 placeholder:text-slate-400 outline-none transition focus:border-blue-400 focus:ring-2 focus:ring-blue-100";
+
 export function WaitlistForm() {
   const [state, setState] = useState<FormState>("idle");
   const [message, setMessage] = useState("");
-  const [fieldError, setFieldError] = useState("");
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setMessage("");
-    setFieldError("");
 
     const formData = new FormData(event.currentTarget);
     const payload = {
-      name: String(formData.get("name") || ""),
+      name: String(formData.get("name") || "").trim(),
       email: String(formData.get("email") || "").trim(),
-      phone: String(formData.get("phone") || ""),
+      phone: String(formData.get("phone") || "").trim(),
     };
 
     if (!emailRegex.test(payload.email)) {
       setState("error");
-      setFieldError("Enter a valid email address.");
+      setMessage("Enter a valid email address.");
       return;
     }
 
     setState("loading");
 
-    const successCopy = "Successful!! We'll contact you shortly.";
-
     try {
       const response = await fetch("/api/waitlist", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
 
-      let data: { ok?: boolean; message?: string; error?: string } = {};
+      let data: { message?: string; error?: string } = {};
       const raw = await response.text();
-      if (raw) {
-        try {
-          data = JSON.parse(raw) as typeof data;
-        } catch {
-          // Some responses are 200 but body is empty or non-JSON; rely on response.ok.
-        }
-      }
+      if (raw) { try { data = JSON.parse(raw); } catch { /* empty */ } }
 
       if (!response.ok) {
         setState("error");
-        setMessage(data.error || "Something went wrong.");
+        setMessage(data.error || "Something went wrong. Please try again.");
         return;
       }
 
       setState("success");
-      setMessage(
-        typeof data.message === "string" && data.message.trim()
-          ? data.message
-          : successCopy,
-      );
+      setMessage(data.message?.trim() || "You're on the list! We'll be in touch soon.");
       event.currentTarget.reset();
     } catch {
       setState("success");
-      setMessage(successCopy);
+      setMessage("You're on the list! We'll be in touch soon.");
       event.currentTarget.reset();
     }
   }
 
+  if (state === "success") {
+    return (
+      <div className="flex items-center gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 px-5 py-4">
+        <CheckCircle2 size={20} className="shrink-0 text-emerald-500" />
+        <p className="text-sm font-medium text-emerald-700">{message}</p>
+      </div>
+    );
+  }
+
   return (
-    <form onSubmit={onSubmit} className="mt-8 space-y-3">
-      <div className="grid gap-3 sm:grid-cols-2">
+    <form onSubmit={onSubmit} className="w-full rounded-2xl border border-slate-200 bg-white p-4 shadow-xl shadow-slate-200/60">
+      <div className="space-y-2.5">
+        {/* Full name */}
         <input
           name="name"
           type="text"
-          placeholder="Name (optional)"
-          className="liquid-glass h-12 rounded-2xl px-4 text-sm outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-100"
+          placeholder="Full name"
+          className={inputCls}
         />
 
-        <input
-          name="phone"
-          type="tel"
-          placeholder="Phone (optional)"
-          className="liquid-glass h-12 rounded-2xl px-4 text-sm outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-100"
-        />
-      </div>
+        {/* Email + phone row */}
+        <div className="grid grid-cols-2 gap-2.5">
+          <input
+            required
+            name="email"
+            type="email"
+            placeholder="Email address"
+            className={inputCls}
+          />
+          <input
+            name="phone"
+            type="tel"
+            placeholder="Phone (optional)"
+            className={inputCls}
+          />
+        </div>
 
-      <div className="flex flex-col gap-3 sm:flex-row">
-        <input
-          required
-          name="email"
-          type="email"
-          placeholder="Enter your email"
-          className="liquid-glass h-12 min-h-12 flex-1 rounded-2xl px-4 text-sm outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-100"
-        />
-
+        {/* CTA button */}
         <button
           type="submit"
           disabled={state === "loading"}
-          className="glass-button group inline-flex h-12 min-h-12 items-center justify-center gap-2 rounded-2xl px-6 text-sm font-semibold text-white transition hover:brightness-105 disabled:cursor-not-allowed disabled:opacity-70"
+          className="glass-button flex h-11 w-full items-center justify-center gap-2 rounded-xl text-sm font-semibold text-white disabled:opacity-60"
         >
-          {state === "loading" ? "Joining..." : "Join Waitlist"}
-          {state === "success" ? (
-            <CheckCircle2 size={18} />
+          {state === "loading" ? (
+            "Joining…"
           ) : (
-            <ArrowRight size={18} className="transition group-hover:translate-x-0.5" />
+            <>
+              Join Waitlist
+              <ArrowRight size={15} />
+            </>
           )}
         </button>
       </div>
 
-      {fieldError ? (
-        <p className="text-sm text-red-600">{fieldError}</p>
-      ) : message ? (
-        <p className={`text-sm ${state === "success" ? "text-emerald-600" : "text-red-600"}`}>
-          {message}
-        </p>
-      ) : (
-        <p className="text-xs text-slate-500">
-          No spam. Just early access updates and launch details.
-        </p>
+      {message && (
+        <p className="mt-2.5 text-center text-sm text-red-500">{message}</p>
       )}
+
+      <p className="mt-2.5 text-center text-xs text-slate-400">
+        No spam · Early access only · Unsubscribe any time
+      </p>
     </form>
   );
 }

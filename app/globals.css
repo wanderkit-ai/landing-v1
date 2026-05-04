@@ -8,18 +8,20 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-syne);
 }
 
 body {
   margin: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
   background-image:
-    radial-gradient(circle at 8% 10%, rgba(59, 130, 246, 0.14), transparent 34%),
-    radial-gradient(circle at 88% 6%, rgba(99, 102, 241, 0.13), transparent 30%),
-    linear-gradient(180deg, #f8fbff 0%, #f7f8fb 55%, #f5f7fb 100%);
+    radial-gradient(circle at 8% 10%, rgba(59, 130, 246, 0.18), transparent 36%),
+    radial-gradient(circle at 88% 6%, rgba(99, 102, 241, 0.16), transparent 32%),
+    radial-gradient(ellipse 60% 40% at 50% 90%, rgba(59, 130, 246, 0.09), transparent),
+    linear-gradient(180deg, #f0f6ff 0%, #f7f8fb 55%, #f5f7fb 100%);
 }
 
 * {
@@ -71,18 +73,32 @@ html {
 .glass-button {
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.55);
   background:
-    linear-gradient(135deg, rgba(59, 130, 246, 0.9), rgba(79, 70, 229, 0.85)),
+    linear-gradient(135deg, rgba(59, 130, 246, 0.92), rgba(79, 70, 229, 0.88)),
     linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0));
   box-shadow:
-    0 12px 26px rgba(37, 99, 235, 0.35),
-    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    0 12px 28px rgba(37, 99, 235, 0.38),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
     inset 0 -10px 20px rgba(15, 23, 42, 0.18);
-  backdrop-filter: blur(14px) saturate(150%);
-  -webkit-backdrop-filter: blur(14px) saturate(150%);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.glass-button:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 18px 38px rgba(37, 99, 235, 0.48),
+    inset 0 1px 0 rgba(255, 255, 255, 0.65),
+    inset 0 -10px 20px rgba(15, 23, 42, 0.18);
+}
+
+.glass-button:active {
+  transform: translateY(0px);
+}
+
+/* Shine sweep on hover */
 .glass-button::before {
   content: "";
   position: absolute;
@@ -90,19 +106,43 @@ html {
   top: -120%;
   width: 52%;
   height: 340%;
-  transform: rotate(20deg);
+  transform: rotate(20deg) translateX(0%);
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.45) 48%,
+    rgba(255, 255, 255, 0.5) 48%,
     rgba(255, 255, 255, 0) 100%
   );
-  transition: transform 0.65s ease;
+  transition: transform 0.7s ease;
   pointer-events: none;
 }
 
 .glass-button:hover::before {
   transform: rotate(20deg) translateX(210%);
+}
+
+/* Liquid blob — continuously drifts around inside the button */
+.glass-button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 55% 45% at 30% 35%,
+    rgba(255, 255, 255, 0.22) 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    transparent 100%
+  );
+  animation: liquid-drift 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes liquid-drift {
+  0%   { background-position: 30% 35%; opacity: 0.8;
+         background: radial-gradient(ellipse 55% 45% at 30% 35%, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.08) 50%, transparent 100%); }
+  25%  { background: radial-gradient(ellipse 60% 50% at 70% 25%, rgba(255,255,255,0.26) 0%, rgba(255,255,255,0.06) 55%, transparent 100%); }
+  50%  { background: radial-gradient(ellipse 50% 55% at 65% 70%, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 50%, transparent 100%); }
+  75%  { background: radial-gradient(ellipse 58% 42% at 25% 65%, rgba(255,255,255,0.24) 0%, rgba(255,255,255,0.07) 52%, transparent 100%); }
+  100% { background: radial-gradient(ellipse 55% 45% at 30% 35%, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.08) 50%, transparent 100%); }
 }
 
 .glass-pill {
