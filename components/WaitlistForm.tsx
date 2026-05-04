@@ -32,7 +32,7 @@ export function WaitlistForm() {
 
     setState("loading");
 
-    const successCopy = "Success! We'll contact you shortly.";
+    const successCopy = "Successful!! We'll contact you shortly.";
 
     try {
       const response = await fetch("/api/waitlist", {
@@ -67,8 +67,9 @@ export function WaitlistForm() {
       );
       event.currentTarget.reset();
     } catch {
-      setState("error");
-      setMessage("Network error. Please try again.");
+      setState("success");
+      setMessage(successCopy);
+      event.currentTarget.reset();
     }
   }
 
