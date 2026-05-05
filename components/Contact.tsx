@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
 
-const BOOK_URL = "https://calendly.com/arijitchakma79/30min";
+const BOOK_URL = "https://calendly.com/ac4393-drexel/30min";
 
 export function Contact() {
   return (
@@ -13,7 +13,7 @@ export function Contact() {
           Want to see it in action?
         </h2>
         <p className="mx-auto mt-5 max-w-md text-base leading-7 text-slate-500">
-          Book a 20-minute call. We'll walk through exactly how it works for your trips and your audience.
+          Book a 30-minute call. We'll walk through exactly how it works for your trips and your audience.
         </p>
 
         <div className="mt-10 flex justify-center">

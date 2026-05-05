@@ -2,7 +2,6 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Menu, X } from "lucide-react";
-import Image from "next/image";
 import { useState } from "react";
 
 const BRAND = { name: "NOMA" };
@@ -24,8 +23,8 @@ export function Header() {
       <div className="relative w-full md:max-w-fit">
         {/* Pill nav bar */}
         <div className="flex w-full items-center gap-1 rounded-full border border-slate-200 bg-white/90 px-2 py-2 shadow-sm backdrop-blur-md md:w-auto">
-          <a href="#" className="flex items-center rounded-full px-2 py-1 transition hover:bg-slate-50">
-            <Image src="/logo.png" alt="NOMA" width={72} height={32} className="h-8 w-auto" priority />
+          <a href="#" className="flex items-center gap-2 rounded-full px-3 py-1.5 transition hover:bg-slate-50">
+            <span className="font-display text-sm font-bold tracking-widest bg-gradient-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent">{BRAND.name}</span>
           </a>
 
           <div className="mx-1 h-4 w-px bg-slate-200" />
