@@ -16,7 +16,7 @@ export function ValueCard({
   iconColor = "text-blue-600",
 }: ValueCardProps) {
   return (
-    <div className="liquid-glass group rounded-[1.5rem] p-6 transition-shadow duration-300 hover:shadow-xl">
+    <div className="liquid-glass group h-full rounded-[1.5rem] p-6 transition-shadow duration-300 hover:shadow-xl">
       <div className={`mb-5 inline-flex rounded-2xl p-3 ${iconBg} ${iconColor}`}>
         <Icon size={22} />
       </div>

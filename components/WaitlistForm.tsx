@@ -18,7 +18,8 @@ export function WaitlistForm() {
     event.preventDefault();
     setMessage("");
 
-    const formData = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const formData = new FormData(form);
     const payload = {
       name: String(formData.get("name") || "").trim(),
       email: String(formData.get("email") || "").trim(),
@@ -52,11 +53,11 @@ export function WaitlistForm() {
 
       setState("success");
       setMessage(data.message?.trim() || "You're on the list! We'll be in touch soon.");
-      event.currentTarget.reset();
+      form.reset();
     } catch {
       setState("success");
       setMessage("You're on the list! We'll be in touch soon.");
-      event.currentTarget.reset();
+      form.reset();
     }
   }
 
@@ -81,7 +82,7 @@ export function WaitlistForm() {
         />
 
         {/* Email + phone row */}
-        <div className="grid grid-cols-2 gap-2.5">
+        <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
           <input
             required
             name="email"
@@ -118,9 +119,6 @@ export function WaitlistForm() {
         <p className="mt-2.5 text-center text-sm text-red-500">{message}</p>
       )}
 
-      <p className="mt-2.5 text-center text-xs text-slate-400">
-        No spam · Early access only · Unsubscribe any time
-      </p>
     </form>
   );
 }

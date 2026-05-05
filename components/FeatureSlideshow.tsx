@@ -82,7 +82,7 @@ function CRMSlide() {
   return (
     <div className="mx-auto max-w-3xl space-y-4">
       {/* Stats row */}
-      <div className="grid grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
         {[
           { label: "Active Trips", value: "3", icon: Globe, color: "text-blue-600", bg: "bg-blue-50" },
           { label: "Total Revenue", value: "$47.2k", icon: TrendingUp, color: "text-emerald-600", bg: "bg-emerald-50" },
@@ -119,9 +119,9 @@ function CRMSlide() {
               transition={{ delay: 0.2 + i * 0.1 }}
               className="px-4 py-3"
             >
-              <div className="mb-2 flex items-center justify-between">
-                <div>
-                  <p className="text-sm font-semibold text-slate-800">{t.name}</p>
+              <div className="mb-2 flex items-center justify-between gap-2">
+                <div className="min-w-0">
+                  <p className="truncate text-sm font-semibold text-slate-800">{t.name}</p>
                   <p className="text-xs text-slate-400">{t.travelers} travelers · {t.revenue}</p>
                 </div>
                 <span className={`rounded-full px-2.5 py-0.5 text-[11px] font-semibold ${
@@ -410,7 +410,7 @@ function TripPageSlide() {
             <p className="text-[11px] text-blue-200">Per person</p>
             <p className="text-xl font-bold text-white">$2,400</p>
           </div>
-          <button className="rounded-xl bg-white px-4 py-2 text-sm font-bold text-blue-700 shadow">
+          <button suppressHydrationWarning className="rounded-xl bg-white px-4 py-2 text-sm font-bold text-blue-700 shadow">
             Book Now →
           </button>
         </div>
@@ -572,43 +572,43 @@ const slides = [
   {
     id: "itinerary", tag: "Itinerary",
     title: "AI builds your full trip plan instantly",
-    sub: "Paste a brief — destination, dates, budget. NOMA generates a day-by-day itinerary with logistics, accommodation, and guide allocation.",
+    sub: "Text your agent a brief — destination, dates, budget — over WhatsApp or Telegram. NOMA generates a complete day-by-day itinerary with real operator availability and pricing.",
     component: ItinerarySlide,
   },
   {
     id: "crm", tag: "CRM",
-    title: "Your entire advisor business, one dashboard",
-    sub: "Track every trip, traveler, operator, and dollar from one place. No spreadsheets, no missed bookings.",
+    title: "Your entire travel business, one dashboard",
+    sub: "Track every trip, traveler, operator, and dollar from one place. Built for influencers running group trips and advisors managing client portfolios.",
     component: CRMSlide,
   },
   {
     id: "operators", tag: "Operators",
-    title: "NOMA finds and contacts local operators for you",
-    sub: "NOMA scans its operator network, ranks by rating and availability, then automatically reaches out to negotiate and confirm.",
+    title: "Agents find and contact local operators for you",
+    sub: "NOMA scans its operator network, ranks by rating and availability, then automatically reaches out on your behalf — no cold emails, no manual research.",
     component: OperatorsSlide,
   },
   {
     id: "negotiation", tag: "Negotiation",
     title: "Watch the agent negotiate in real-time",
-    sub: "NOMA goes back and forth with operators — countering prices, handling objections, and locking in the best deal without you lifting a finger.",
+    sub: "Agents go back and forth with operators — countering prices, handling objections, and locking in the best deal. You can follow the conversation and step in anytime from WhatsApp.",
     component: LiveNegotiationSlide,
   },
   {
     id: "page", tag: "Trip Page",
     title: "A beautiful public page, ready to share",
-    sub: "Your itinerary becomes a shareable booking page in one click — your brand, your link, your followers can pay directly.",
+    sub: "Your itinerary becomes a shareable booking page in one click — your brand, your link. Share it with your followers and let them pay directly.",
     component: TripPageSlide,
   },
   {
     id: "bookings", tag: "Bookings",
     title: "Watch your followers book in real-time",
-    sub: "NOMA handles payments, confirmations, and follow-up inquiries automatically as spots fill up.",
+    sub: "Agents handle payments, confirmations, and traveler inquiries automatically as spots fill. You get notified; they do the work.",
     component: BookingsSlide,
   },
   {
     id: "paperwork", tag: "Paperwork",
     title: "Every permit, waiver, and doc — automated",
-    sub: "NOMA tracks and chases every document for every traveler so you never have to manage a WhatsApp thread again.",
+    sub: "Agents track and chase every document for every traveler — permits, waivers, insurance, emergency contacts. You never need to manage another WhatsApp thread.",
     component: PaperworkSlide,
   },
 ];
@@ -638,6 +638,19 @@ export function FeatureSlideshow() {
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
   }, []);
 
+  useEffect(() => {
+    function onHashChange() {
+      if (window.location.hash === "#how-it-works") {
+        setDirection(1);
+        setCurrent(0);
+        if (timerRef.current) clearInterval(timerRef.current);
+        timerRef.current = setInterval(advance, INTERVAL);
+      }
+    }
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, []);
+
   const variants = {
     enter: (dir: number) => ({ x: dir * 50, opacity: 0 }),
     center: { x: 0, opacity: 1 },
@@ -648,7 +661,7 @@ export function FeatureSlideshow() {
   const slide = slides[current];
 
   return (
-    <section id="how-it-works" className="px-5 py-20">
+    <section id="how-it-works" className="px-5 py-12 md:py-20">
       <div className="mx-auto max-w-5xl">
       {/* Tab bar */}
       <div className="mb-10 flex flex-col items-center gap-6">
@@ -656,6 +669,7 @@ export function FeatureSlideshow() {
           {slides.map((s, i) => (
             <button
               key={s.id}
+              suppressHydrationWarning
               onClick={() => go(i)}
               className={`relative rounded-xl px-3.5 py-1.5 text-sm font-medium transition-colors ${
                 i === current ? "text-white" : "text-slate-500 hover:text-slate-800"
@@ -682,7 +696,7 @@ export function FeatureSlideshow() {
             transition={{ duration: 0.3 }}
             className="text-center"
           >
-            <h2 className="font-display text-3xl font-bold tracking-tight text-slate-950 md:text-4xl">
+            <h2 className="font-display text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl md:text-4xl">
               {slide.title}
             </h2>
             <p className="mx-auto mt-3 max-w-lg text-base text-slate-500">{slide.sub}</p>
@@ -710,7 +724,7 @@ export function FeatureSlideshow() {
       {/* Progress dots */}
       <div className="mt-8 flex items-center justify-center gap-2">
         {slides.map((_, i) => (
-          <button key={i} onClick={() => go(i)} className="group p-1">
+          <button key={i} suppressHydrationWarning onClick={() => go(i)} className="group p-1">
             <motion.div
               animate={{ width: i === current ? 24 : 8 }}
               transition={{ duration: 0.3 }}

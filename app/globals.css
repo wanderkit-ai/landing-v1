@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f7f8fb;
+  --background: #eaedff;
   --foreground: #0f172a;
 }
 
@@ -14,14 +14,9 @@
 
 body {
   margin: 0;
-  background: var(--background);
+  background-color: #eaedff;
   color: var(--foreground);
   font-family: var(--font-inter), Arial, Helvetica, sans-serif;
-  background-image:
-    radial-gradient(circle at 8% 10%, rgba(59, 130, 246, 0.18), transparent 36%),
-    radial-gradient(circle at 88% 6%, rgba(99, 102, 241, 0.16), transparent 32%),
-    radial-gradient(ellipse 60% 40% at 50% 90%, rgba(59, 130, 246, 0.09), transparent),
-    linear-gradient(180deg, #f0f6ff 0%, #f7f8fb 55%, #f5f7fb 100%);
 }
 
 * {
@@ -144,6 +139,75 @@ html {
   75%  { background: radial-gradient(ellipse 58% 42% at 25% 65%, rgba(255,255,255,0.24) 0%, rgba(255,255,255,0.07) 52%, transparent 100%); }
   100% { background: radial-gradient(ellipse 55% 45% at 30% 35%, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.08) 50%, transparent 100%); }
 }
+
+/* ── Hero background animations ── */
+
+.aurora-band {
+  background: linear-gradient(
+    115deg,
+    rgba(59, 130, 246, 0.14) 0%,
+    rgba(139, 92, 246, 0.11) 38%,
+    rgba(16, 185, 129, 0.07) 65%,
+    rgba(59, 130, 246, 0.09) 100%
+  );
+  filter: blur(52px);
+  animation: aurora-drift 18s ease-in-out infinite alternate;
+}
+
+@keyframes aurora-drift {
+  0%   { transform: translateX(-4%) scaleX(1.06) scaleY(1);   opacity: 0.45; }
+  40%  { transform: translateX(2%)  scaleX(0.98) scaleY(1.15); opacity: 0.6;  }
+  100% { transform: translateX(-2%) scaleX(1.04) scaleY(0.92); opacity: 0.42; }
+}
+
+.sun-orb {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,238,170,0.88) 20%, rgba(255,210,100,0.5) 50%, rgba(255,185,60,0.18) 72%, transparent 100%);
+  filter: blur(4px);
+  animation: sun-pulse 9s ease-in-out infinite alternate;
+}
+
+@keyframes sun-pulse {
+  0%   { transform: scale(1);    opacity: 0.75; }
+  100% { transform: scale(1.1);  opacity: 0.95; }
+}
+
+.mountain-far {
+  height: 46%;
+  animation: mtn-far 28s ease-in-out infinite alternate;
+}
+.mountain-mid {
+  height: 38%;
+  animation: mtn-mid 20s ease-in-out infinite alternate;
+}
+.dune-far {
+  height: 28%;
+  animation: dune-far 22s ease-in-out infinite alternate;
+}
+.dune-near {
+  height: 16%;
+  animation: dune-near 16s ease-in-out infinite alternate;
+}
+
+@media (min-width: 768px) {
+  .mountain-far { height: 76%; }
+  .mountain-mid { height: 66%; }
+  .dune-far     { height: 52%; }
+  .dune-near    { height: 30%; }
+}
+
+@keyframes mtn-far  { 0% { transform: translateX(0)    translateY(0);    } 100% { transform: translateX(-20px) translateY(-6px);  } }
+@keyframes mtn-mid  { 0% { transform: translateX(0)    translateY(0);    } 100% { transform: translateX(16px)  translateY(-10px); } }
+@keyframes dune-far  { 0% { transform: translateX(0);   } 100% { transform: translateX(18px);  } }
+@keyframes dune-near { 0% { transform: translateX(0);   } 100% { transform: translateX(-14px); } }
+
+@keyframes snowfall-0 { 0% { transform: translateY(-8px) translateX(0);    opacity:0; } 6% { opacity:1; } 94% { opacity:0.5; } 100% { transform: translateY(110vh) translateX(16px);   opacity:0; } }
+@keyframes snowfall-1 { 0% { transform: translateY(-8px) translateX(0);    opacity:0; } 6% { opacity:1; } 94% { opacity:0.5; } 100% { transform: translateY(110vh) translateX(-22px);  opacity:0; } }
+@keyframes snowfall-2 { 0% { transform: translateY(-8px) translateX(0);    opacity:0; } 6% { opacity:1; } 94% { opacity:0.5; } 100% { transform: translateY(110vh) translateX(28px);   opacity:0; } }
+@keyframes snowfall-3 { 0% { transform: translateY(-8px) translateX(0);    opacity:0; } 6% { opacity:1; } 94% { opacity:0.5; } 100% { transform: translateY(110vh) translateX(-12px);  opacity:0; } }
+@keyframes snowfall-4 { 0% { transform: translateY(-8px) translateX(0);    opacity:0; } 6% { opacity:1; } 94% { opacity:0.5; } 100% { transform: translateY(110vh) translateX(20px);   opacity:0; } }
 
 .glass-pill {
   border: 1px solid rgba(255, 255, 255, 0.66);
