@@ -7,6 +7,7 @@ import { useState } from "react";
 const BRAND = { name: "NOMA" };
 
 const navLinks = [
+  { href: "/admin",        label: "Admin"         },
   { href: "#how-it-works", label: "How it works" },
   { href: "#benefits",     label: "Benefits"     },
   { href: "#faq",          label: "FAQ"           },
@@ -48,7 +49,7 @@ export function Header() {
 
           <a
             href="#waitlist"
-            className="glass-button inline-flex items-center gap-1.5 px-4 py-1.5 text-sm font-semibold text-white"
+            className="glass-button inline-flex items-center gap-1.5 px-4 py-1.5 text-base font-black tracking-tight text-[#FFD528]"
           >
             Join Waitlist
             <ArrowRight size={14} />

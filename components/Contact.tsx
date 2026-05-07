@@ -6,7 +6,7 @@ export function Contact() {
   return (
     <section id="contact" className="border-t border-indigo-100 px-5 py-16 md:py-28">
       <div className="mx-auto max-w-2xl text-center">
-        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-blue-500">
+        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[#FFD528]">
           Get in touch
         </p>
         <h2 className="mt-5 font-display text-3xl font-bold tracking-tight text-slate-900 md:text-4xl lg:text-5xl">

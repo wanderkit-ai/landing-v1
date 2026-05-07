@@ -102,7 +102,7 @@ export function WaitlistForm() {
         <button
           type="submit"
           disabled={state === "loading"}
-          className="glass-button flex h-11 w-full items-center justify-center gap-2 text-sm font-semibold text-white disabled:opacity-60"
+          className="glass-button flex h-11 w-full items-center justify-center gap-2 text-base font-black tracking-tight text-[#FFD528] disabled:opacity-60"
         >
           {state === "loading" ? (
             "Joining…"

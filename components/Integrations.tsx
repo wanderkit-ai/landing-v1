@@ -123,12 +123,12 @@ export function Integrations() {
       <div className="mx-auto max-w-5xl">
         <ScrollReveal>
           <div className="mx-auto mb-8 max-w-2xl text-center">
-            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-600">
+            <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#FFD528]">
               Integrations
             </p>
             <h2 className="mt-3 font-display text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl md:text-4xl">
               Works where you{" "}
-              <span className="bg-gradient-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent">
+              <span className="text-[#FFD528]">
                 already are.
               </span>
             </h2>

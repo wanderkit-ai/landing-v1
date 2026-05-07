@@ -28,23 +28,17 @@ export default function HomePage() {
                 <span className="absolute inline-flex h-full w-full animate-ping bg-black opacity-40" />
                 <span className="relative inline-flex h-2 w-2 bg-black" />
               </span>
-              AI layer for travel influencers &amp; advisors
+              AI engine for adventure influencers, tour operators, and advisors
             </div>
           </ScrollReveal>
 
           <ScrollReveal delay={0.06}>
             <h1 className="mt-5 font-display text-balance text-4xl font-bold tracking-normal text-black sm:text-5xl md:text-6xl">
               Run more trips.{" "}
-              <span className="text-[#1f1f1f]">
+              <span className="text-[#FFD528]">
                 Do less work.
               </span>
             </h1>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.11}>
-            <p className="mt-4 max-w-lg text-balance text-lg leading-7 text-[#1f1f1f]">
-              You bring the audience. NOMA handles everything else.
-            </p>
           </ScrollReveal>
 
           <ScrollReveal delay={0.16}>

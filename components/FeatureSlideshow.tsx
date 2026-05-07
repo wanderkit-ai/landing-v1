@@ -23,8 +23,8 @@ function ItinerarySlide() {
   const [typing, setTyping] = useState(true);
   useEffect(() => { const t = setTimeout(() => setTyping(false), 1800); return () => clearTimeout(t); }, []);
   return (
-    <div className="mx-auto max-w-2xl overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl shadow-slate-200/60">
-      <div className="border-b border-slate-100 bg-gradient-to-r from-blue-600 to-indigo-600 px-5 py-4">
+    <div className="mx-auto max-w-2xl overflow-hidden rounded-none border-2 border-black bg-white shadow-xl shadow-slate-200/60">
+      <div className="border-b-2 border-black bg-black px-5 py-4">
         <p className="text-xs font-semibold uppercase tracking-widest text-blue-100">NOMA AI Planner</p>
         <p className="mt-1 text-sm font-medium text-white opacity-90">
           "8 followers, Everest Base Camp, 12 days, mid-October, $2,500/person"
@@ -50,7 +50,7 @@ function ItinerarySlide() {
           >
             <span className="text-lg">{d.emoji}</span>
             <div className="flex-1 min-w-0">
-              <span className="text-[11px] font-bold text-blue-600">{d.day}</span>
+              <span className="text-[11px] font-bold text-black">{d.day}</span>
               <p className="truncate text-sm font-medium text-slate-800">{d.title}</p>
             </div>
             <span className="shrink-0 text-xs text-slate-400">{d.detail}</span>
@@ -94,7 +94,7 @@ function CRMSlide() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.08 }}
-            className="rounded-2xl border border-slate-100 bg-white p-3 shadow-sm"
+            className="rounded-none border-2 border-black bg-white p-3 shadow-sm"
           >
             <div className={`mb-2 inline-flex rounded-xl p-2 ${s.bg}`}>
               <s.icon size={14} className={s.color} />
@@ -106,7 +106,7 @@ function CRMSlide() {
       </div>
 
       {/* Trip pipeline */}
-      <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg shadow-slate-200/50">
+      <div className="overflow-hidden rounded-none border-2 border-black bg-white shadow-lg shadow-slate-200/50">
         <div className="border-b border-slate-100 bg-slate-50 px-4 py-3">
           <p className="text-sm font-semibold text-slate-900">Trip Pipeline</p>
         </div>
@@ -158,7 +158,7 @@ const operators = [
 
 function OperatorsSlide() {
   return (
-    <div className="mx-auto max-w-2xl overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl shadow-slate-200/60">
+    <div className="mx-auto max-w-2xl overflow-hidden rounded-none border-2 border-black bg-white shadow-xl shadow-slate-200/60">
       <div className="flex items-center gap-3 border-b border-slate-100 bg-slate-50 px-4 py-3">
         <Search size={14} className="text-slate-400" />
         <p className="flex-1 text-sm text-slate-500">Searching operators in Nepal · Khumbu region…</p>
@@ -202,8 +202,8 @@ function OperatorsSlide() {
           </motion.div>
         ))}
       </div>
-      <div className="border-t border-blue-100 bg-blue-50 px-4 py-3">
-        <p className="text-xs text-blue-700">🤖 <span className="font-medium">NOMA Agent:</span> Auto-messaging operators ranked by rating, availability, and past performance.</p>
+      <div className="border-t-2 border-black bg-neutral-100 px-4 py-3">
+        <p className="text-xs text-black">🤖 <span className="font-medium">NOMA Agent:</span> Auto-messaging operators ranked by rating, availability, and past performance.</p>
       </div>
     </div>
   );
@@ -262,7 +262,7 @@ function LiveNegotiationSlide() {
   }, [visible, typing]);
 
   return (
-    <div className="mx-auto max-w-lg overflow-hidden rounded-3xl shadow-2xl shadow-slate-200/80">
+    <div className="mx-auto max-w-lg overflow-hidden rounded-none border-2 border-black shadow-2xl shadow-slate-200/80">
       {/* Header */}
       <div className="flex items-center gap-3 bg-[#075E54] px-4 py-3">
         <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-emerald-300 text-sm font-bold text-emerald-900">P</div>
@@ -292,7 +292,7 @@ function LiveNegotiationSlide() {
               transition={{ duration: 0.3, ease: "easeOut" }}
               className={`flex ${isAgent ? "justify-end" : "justify-start"}`}
             >
-              <div className={`max-w-[80%] rounded-2xl px-3.5 py-2.5 shadow-sm ${
+              <div className={`max-w-[80%] rounded-none px-3.5 py-2.5 shadow-sm ${
                 isAgent ? "rounded-tr-sm bg-[#DCF8C6]" : "rounded-tl-sm bg-white"
               }`}>
                 <p className={`mb-0.5 text-[11px] font-semibold ${isAgent ? "text-emerald-700" : "text-blue-600"}`}>
@@ -315,7 +315,7 @@ function LiveNegotiationSlide() {
               transition={{ duration: 0.2 }}
               className="flex justify-start"
             >
-              <div className="flex items-center gap-1 rounded-2xl rounded-tl-sm bg-white px-4 py-3 shadow-sm">
+              <div className="flex items-center gap-1 rounded-none bg-white px-4 py-3 shadow-sm">
                 {[0, 1, 2].map(i => (
                   <motion.span
                     key={i}
@@ -336,7 +336,7 @@ function LiveNegotiationSlide() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.3, duration: 0.35 }}
-              className="flex items-center gap-2.5 rounded-2xl bg-emerald-600 px-4 py-3"
+              className="flex items-center gap-2.5 rounded-none bg-black px-4 py-3"
             >
               <span className="text-base">🎉</span>
               <div>
@@ -357,7 +357,7 @@ function LiveNegotiationSlide() {
 ════════════════════════════════════════════ */
 function TripPageSlide() {
   return (
-    <div className="mx-auto max-w-sm overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl shadow-slate-200/70">
+    <div className="mx-auto max-w-sm overflow-hidden rounded-none border-2 border-black bg-white shadow-2xl shadow-slate-200/70">
       {/* Hero */}
       <div className="relative h-40 bg-gradient-to-br from-sky-400 via-blue-500 to-indigo-600">
         <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
@@ -405,7 +405,7 @@ function TripPageSlide() {
         </div>
 
         {/* Price + CTA */}
-        <div className="flex items-center justify-between rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 px-4 py-3">
+        <div className="flex items-center justify-between rounded-none bg-black px-4 py-3">
           <div>
             <p className="text-[11px] text-blue-200">Per person</p>
             <p className="text-xl font-bold text-white">$2,400</p>
@@ -436,10 +436,10 @@ function BookingsSlide() {
   return (
     <div className="mx-auto max-w-2xl space-y-4">
       {/* Progress */}
-      <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white p-4 shadow-lg shadow-slate-200/50">
+      <div className="overflow-hidden rounded-none border-2 border-black bg-white p-4 shadow-lg shadow-slate-200/50">
         <div className="mb-2 flex items-center justify-between">
           <p className="text-sm font-semibold text-slate-900">EBC Trek · Spots filling up</p>
-          <span className="text-sm font-bold text-blue-600">{booked}/{total} booked</span>
+          <span className="text-sm font-bold text-black">{booked}/{total} booked</span>
         </div>
         <div className="h-2.5 w-full rounded-full bg-slate-100">
           <motion.div
@@ -456,7 +456,7 @@ function BookingsSlide() {
       </div>
 
       {/* Booking feed */}
-      <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-lg shadow-slate-200/50">
+      <div className="overflow-hidden rounded-none border-2 border-black bg-white shadow-lg shadow-slate-200/50">
         <div className="border-b border-slate-100 bg-slate-50 px-4 py-3">
           <p className="text-sm font-semibold text-slate-900">Live booking feed</p>
         </div>
@@ -510,7 +510,7 @@ const logisticsItems = [
 
 function PaperworkSlide() {
   return (
-    <div className="mx-auto max-w-2xl overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-xl shadow-slate-200/60">
+    <div className="mx-auto max-w-2xl overflow-hidden rounded-none border-2 border-black bg-white shadow-xl shadow-slate-200/60">
       <div className="flex items-center justify-between border-b border-slate-100 bg-slate-50 px-5 py-3">
         <div>
           <p className="text-sm font-semibold text-slate-900">Logistics tracker · EBC Oct 15</p>
@@ -613,11 +613,12 @@ const slides = [
   },
 ];
 
-const INTERVAL = 6000;
+const INTERVAL = 10000;
 
 export function FeatureSlideshow() {
   const [current, setCurrent] = useState(0);
   const [direction, setDirection] = useState(1);
+  const [progressKey, setProgressKey] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   function go(idx: number) {
@@ -626,15 +627,18 @@ export function FeatureSlideshow() {
     setCurrent(idx);
     if (timerRef.current) clearInterval(timerRef.current);
     timerRef.current = setInterval(advance, INTERVAL);
+    setProgressKey(k => k + 1);
   }
 
   function advance() {
     setDirection(1);
     setCurrent(c => (c + 1) % slides.length);
+    setProgressKey(k => k + 1);
   }
 
   useEffect(() => {
     timerRef.current = setInterval(advance, INTERVAL);
+    setProgressKey(k => k + 1);
     return () => { if (timerRef.current) clearInterval(timerRef.current); };
   }, []);
 
@@ -645,6 +649,7 @@ export function FeatureSlideshow() {
         setCurrent(0);
         if (timerRef.current) clearInterval(timerRef.current);
         timerRef.current = setInterval(advance, INTERVAL);
+        setProgressKey(k => k + 1);
       }
     }
     window.addEventListener("hashchange", onHashChange);
@@ -665,20 +670,20 @@ export function FeatureSlideshow() {
       <div className="mx-auto max-w-5xl">
       {/* Tab bar */}
       <div className="mb-10 flex flex-col items-center gap-6">
-        <div className="flex flex-wrap justify-center gap-1.5 rounded-2xl border border-slate-200 bg-white p-1.5 shadow-sm">
+      <div className="flex flex-wrap justify-center gap-1.5 rounded-none border-2 border-black bg-white p-1.5 shadow-none">
           {slides.map((s, i) => (
             <button
               key={s.id}
               suppressHydrationWarning
               onClick={() => go(i)}
-              className={`relative rounded-xl px-3.5 py-1.5 text-sm font-medium transition-colors ${
-                i === current ? "text-white" : "text-slate-500 hover:text-slate-800"
+              className={`relative rounded-none px-3.5 py-1.5 text-sm font-medium transition-colors ${
+                i === current ? "text-white" : "text-black/60 hover:text-black"
               }`}
             >
               {i === current && (
                 <motion.span
                   layoutId="tab-pill"
-                  className="absolute inset-0 rounded-xl bg-blue-600"
+                  className="absolute inset-0 rounded-none bg-black"
                   transition={{ type: "spring", stiffness: 380, damping: 30 }}
                 />
               )}
@@ -699,7 +704,7 @@ export function FeatureSlideshow() {
             <h2 className="font-display text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl md:text-4xl">
               {slide.title}
             </h2>
-            <p className="mx-auto mt-3 max-w-lg text-base text-slate-500">{slide.sub}</p>
+            <p className="mx-auto mt-3 max-w-lg text-base text-black/70">{slide.sub}</p>
           </motion.div>
         </AnimatePresence>
       </div>
@@ -721,6 +726,16 @@ export function FeatureSlideshow() {
         </AnimatePresence>
       </div>
 
+      <div className="mt-4 h-1 w-full overflow-hidden rounded-none bg-black/15">
+        <motion.div
+          key={progressKey}
+          className="h-full bg-black"
+          initial={{ width: "0%" }}
+          animate={{ width: "100%" }}
+          transition={{ duration: INTERVAL / 1000, ease: "linear" }}
+        />
+      </div>
+
       {/* Progress dots */}
       <div className="mt-8 flex items-center justify-center gap-2">
         {slides.map((_, i) => (
@@ -729,7 +744,7 @@ export function FeatureSlideshow() {
               animate={{ width: i === current ? 24 : 8 }}
               transition={{ duration: 0.3 }}
               className={`h-2 rounded-full transition-colors ${
-                i === current ? "bg-blue-600" : "bg-slate-200 group-hover:bg-slate-300"
+                i === current ? "bg-black" : "bg-slate-300 group-hover:bg-slate-500"
               }`}
             />
           </button>
