@@ -97,7 +97,7 @@ export function HeroBackground() {
           key={card.alt}
           className={card.wrapper}
           initial={{ opacity: 0, y: 12, rotate: card.tilt[0] }}
-          animate={{ opacity: 1, y: card.drift, rotate: card.tilt }}
+          animate={{ opacity: 1, y: [...card.drift], rotate: [...card.tilt] }}
           transition={{
             opacity: { duration: 0.5, delay: idx * 0.08 + 0.1 },
             y: { duration: card.duration, repeat: Infinity, ease: "easeInOut" },
