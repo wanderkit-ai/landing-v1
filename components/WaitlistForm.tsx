@@ -8,7 +8,7 @@ type FormState = "idle" | "loading" | "success" | "error";
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const inputCls =
-  "h-11 w-full rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-900 placeholder:text-slate-400 outline-none transition focus:border-blue-400 focus:ring-2 focus:ring-blue-100";
+  "h-11 w-full border-2 border-black/25 bg-white px-4 text-sm text-black placeholder:text-[#1f1f1f] outline-none transition focus:border-black";
 
 export function WaitlistForm() {
   const [state, setState] = useState<FormState>("idle");
@@ -63,15 +63,15 @@ export function WaitlistForm() {
 
   if (state === "success") {
     return (
-      <div className="flex items-center gap-3 rounded-2xl border border-emerald-200 bg-emerald-50 px-5 py-4">
-        <CheckCircle2 size={20} className="shrink-0 text-emerald-500" />
-        <p className="text-sm font-medium text-emerald-700">{message}</p>
+      <div className="liquid-glass flex items-center gap-3 px-5 py-4">
+        <CheckCircle2 size={20} className="shrink-0 text-black" />
+        <p className="text-sm font-medium text-black">{message}</p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={onSubmit} className="w-full rounded-2xl border border-slate-200 bg-white p-4 shadow-xl shadow-slate-200/60">
+    <form onSubmit={onSubmit} className="liquid-glass w-full p-4">
       <div className="space-y-2.5">
         {/* Full name */}
         <input
@@ -102,7 +102,7 @@ export function WaitlistForm() {
         <button
           type="submit"
           disabled={state === "loading"}
-          className="glass-button flex h-11 w-full items-center justify-center gap-2 rounded-xl text-sm font-semibold text-white disabled:opacity-60"
+          className="glass-button flex h-11 w-full items-center justify-center gap-2 text-sm font-semibold text-white disabled:opacity-60"
         >
           {state === "loading" ? (
             "Joining…"
@@ -116,7 +116,7 @@ export function WaitlistForm() {
       </div>
 
       {message && (
-        <p className="mt-2.5 text-center text-sm text-red-500">{message}</p>
+        <p className="mt-2.5 text-center text-sm text-[#C8102E]">{message}</p>
       )}
 
     </form>

@@ -16,12 +16,12 @@ export function ValueCard({
   iconColor = "text-blue-600",
 }: ValueCardProps) {
   return (
-    <div className="liquid-glass group h-full rounded-[1.5rem] p-6 transition-shadow duration-300 hover:shadow-xl">
-      <div className={`mb-5 inline-flex rounded-2xl p-3 ${iconBg} ${iconColor}`}>
+    <div className="liquid-glass group h-full p-6 transition-transform duration-100 hover:translate-x-0.5 hover:translate-y-0.5">
+      <div className={`mb-5 inline-flex border-2 border-black p-3 ${iconBg} ${iconColor}`}>
         <Icon size={22} />
       </div>
-      <h3 className="font-display text-lg font-bold text-slate-950">{title}</h3>
-      <p className="mt-2 text-sm leading-6 text-slate-600">{description}</p>
+      <h3 className="font-display text-lg font-bold text-black">{title}</h3>
+      <p className="mt-2 text-sm leading-6 text-[#1f1f1f]">{description}</p>
     </div>
   );
 }

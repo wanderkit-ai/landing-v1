@@ -15,7 +15,7 @@ const BRAND = {
 
 export default function HomePage() {
   return (
-    <main className="relative min-h-screen overflow-x-hidden text-slate-950">
+    <main className="relative min-h-screen overflow-x-hidden text-black">
       <Header />
 
       <section className="relative flex h-screen flex-col overflow-hidden">
@@ -23,26 +23,26 @@ export default function HomePage() {
 
         <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col items-center justify-center px-5 pb-10 pt-20 text-center">
           <ScrollReveal>
-            <div className="glass-pill inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-blue-700">
+            <div className="glass-pill inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-black">
               <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-400 opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-blue-500" />
+                <span className="absolute inline-flex h-full w-full animate-ping bg-black opacity-40" />
+                <span className="relative inline-flex h-2 w-2 bg-black" />
               </span>
               AI layer for travel influencers &amp; advisors
             </div>
           </ScrollReveal>
 
           <ScrollReveal delay={0.06}>
-            <h1 className="mt-5 font-display text-balance text-4xl font-extrabold tracking-tight text-slate-950 sm:text-5xl md:text-6xl">
+            <h1 className="mt-5 font-display text-balance text-4xl font-bold tracking-normal text-black sm:text-5xl md:text-6xl">
               Run more trips.{" "}
-              <span className="bg-gradient-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent">
+              <span className="text-[#1f1f1f]">
                 Do less work.
               </span>
             </h1>
           </ScrollReveal>
 
           <ScrollReveal delay={0.11}>
-            <p className="mt-4 max-w-lg text-balance text-lg leading-7 text-slate-500">
+            <p className="mt-4 max-w-lg text-balance text-lg leading-7 text-[#1f1f1f]">
               You bring the audience. NOMA handles everything else.
             </p>
           </ScrollReveal>
@@ -54,8 +54,8 @@ export default function HomePage() {
           </ScrollReveal>
 
           <ScrollReveal delay={0.2}>
-            <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/70 bg-white/55 px-4 py-2 text-sm font-semibold text-slate-600 shadow-sm backdrop-blur-sm">
-              <MapPin className="h-4 w-4 text-blue-600" aria-hidden="true" />
+            <div className="glass-pill mt-4 inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-[#1f1f1f]">
+              <MapPin className="h-4 w-4 text-black" aria-hidden="true" />
               Currently operating in Nepal, expanding soon
             </div>
           </ScrollReveal>
@@ -66,13 +66,13 @@ export default function HomePage() {
         <div className="flex justify-center pb-8">
           <a
             href="#how-it-works"
-            className="group flex items-center gap-2.5 rounded-full border border-slate-200 bg-white/80 px-5 py-2.5 shadow-sm backdrop-blur-sm transition hover:border-blue-200 hover:shadow-md"
+            className="glass-pill group flex items-center gap-2.5 px-5 py-2.5 transition"
           >
-            <span className="text-sm font-medium text-slate-600 transition group-hover:text-blue-600">
+            <span className="text-sm font-medium text-[#1f1f1f] transition group-hover:text-black">
               See how it works
             </span>
-            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-slate-100 transition group-hover:bg-blue-100">
-              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className="animate-bounce text-slate-500 group-hover:text-blue-500">
+            <span className="flex h-5 w-5 items-center justify-center border border-black/25 transition">
+              <svg width="10" height="10" viewBox="0 0 10 10" fill="none" className="animate-bounce text-[#1f1f1f] group-hover:text-black">
                 <path d="M5 1v8M1.5 5.5l3.5 3.5 3.5-3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </span>
@@ -85,12 +85,12 @@ export default function HomePage() {
       <ScrollReveal>
         <section id="benefits" className="mx-auto max-w-7xl px-5 py-12 md:py-20">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-600">
+          <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#1f1f1f]">
             Who it's for
           </p>
           <h2 className="mt-4 font-display text-2xl font-bold tracking-tight sm:text-3xl md:text-5xl">
             Built for{" "}
-            <span className="bg-gradient-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent">
+            <span className="text-[#1f1f1f]">
               travel influencers
             </span>{" "}
             &amp; advisors.
@@ -133,12 +133,12 @@ export default function HomePage() {
       <FAQ />
       <Contact />
 
-      <footer className="border-t border-indigo-100 px-5 py-8">
-        <div className="mx-auto flex max-w-7xl flex-col gap-3 text-sm text-slate-400 md:flex-row md:items-center md:justify-between">
+      <footer className="border-t-2 border-black px-5 py-8">
+        <div className="mx-auto flex max-w-7xl flex-col gap-3 text-sm text-[#1f1f1f] md:flex-row md:items-center md:justify-between">
           <p>© 2026 {BRAND.name}. All rights reserved.</p>
           <div className="flex gap-5">
-            <a href="#" className="transition hover:text-slate-700">Privacy</a>
-            <a href="#" className="transition hover:text-slate-700">Terms</a>
+            <a href="#" className="transition hover:text-black">Privacy</a>
+            <a href="#" className="transition hover:text-black">Terms</a>
           </div>
         </div>
       </footer>
